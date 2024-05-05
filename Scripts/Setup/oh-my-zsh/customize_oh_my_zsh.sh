@@ -102,12 +102,12 @@ function make_config() {
         fi
 
         # Setze einstellungen für p10k falls vorkonfigurierte .p10k.zsh vorhanden
-        if [[ -f "$dir/.p10k.zsh" ]]; then
+        if [[ -f "$dir/oh-my-zsh/custom/.p10k.zsh" ]]; then
             [[ $feedback_mode == true ]] && echo "THEME: Setze vordefinierte powerlevel10k Konfiguration."
             [[ $feedback_mode == true ]] && echo "THEME: Nutze \'p10k configure\' zum anpassen"
             if [[ ! -f "$HOME/.p10k.zsh" ]]; then
-                cp $dir/.p10k.zsh $HOME/
-                [[ $debug_mode == true ]] && echo " $dir/.p10k.zsh wurde nach $HOME/ kopiert"
+                cp $dir/oh-my-zsh/custom/.p10k.zsh $HOME/
+                [[ $debug_mode == true ]] && echo " $dir/oh-my-zsh/custom/.p10k.zsh wurde nach $HOME/ kopiert"
             else
                 [[ $debug_mode == true ]] && echo " .p10k.zsh wurde in $HOME/ gefunden"
             fi
