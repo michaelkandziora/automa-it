@@ -11,7 +11,7 @@ class Config:
             'docker': ['Setup/Docker'],
             'python': ['Setup/Python'],
             'nodejs': ['Setup/Nodejs'],
-            'backup': ['Setup/Backup'],
+            'backup': ['Backup'],
             'forensic': ['Setup/Security']
         }
         self.filepaths = self.make_dict()
