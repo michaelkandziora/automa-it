@@ -12,7 +12,7 @@ class Config:
             'python': ['Setup/Python'],
             'nodejs': ['Setup/Nodejs'],
             'backup': ['Backup'],
-            'forensic': ['Setup/Security']
+            'forensic': ['Security']
         }
         self.filepaths = self.make_dict()
 
