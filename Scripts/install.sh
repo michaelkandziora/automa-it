@@ -18,7 +18,7 @@ function extract_script() {
     # Fehler Filename too long.. es wurd Base64 dargestellt keine Ahnung woher er ein Base64 ausdruck als filename nimmt, 
     # vermutung irgendwo verbergen sich '/' Zeichen und vlt wird das als file input interpretiert 
     #echo $(sed -n '/^# BASE64 DATA START$/,/^# BASE64 DATA END$/p' $0 | sed '/^#/d') | base64 -d | tar -xz -C "$tmp_dir"
-    echo $tar64 | base64 -d | tar -xz -C "$tmp_dir"
+    echo $tar64 | base64 -d | tar -x -C "$tmp_dir"
     echo "Skripte entpackt in: $tmp_dir"
     #export script_dir="$tmp_dir"
 }
