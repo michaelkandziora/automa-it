@@ -1,0 +1,9 @@
+#version: '3.8'
+
+services:
+  flask_app:
+    container_name: scriptusmaximus
+    build: .
+    ports:
+      - "80:5000"
+    

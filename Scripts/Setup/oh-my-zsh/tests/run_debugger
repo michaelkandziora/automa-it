@@ -1,0 +1,39 @@
+#!/bin/bash
+# sudo apt-get install inotify-tools
+#
+#
+# Verzeichnis, in dem die Dateien überwacht werden
+WATCH_DIR="/home/administrator/docker/dev/Ubuntu"
+
+# Dateien, die überwacht werden sollen
+FILES=(
+    "$WATCH_DIR/config.toml"
+    "$WATCH_DIR/utils.sh"
+    "$WATCH_DIR/customize_omz.sh"
+    "$WATCH_DIR/Dockerfile"
+)
+
+# Funktion, um Docker-Befehle auszuführen
+function restart_docker() {
+    cd "$WATCH_DIR"
+    echo "Stopping and removing the current Docker containers and images..."
+    docker compose down && docker image rm ubuntu-docker-dev
+
+    echo "Starting up the Docker containers..."
+    docker compose up -d
+
+    # Benutzerabfrage, um das Skript im Container auszuführen
+    read -p "Möchten Sie das Skript starten? (y/n) " answer
+    if [[ "$answer" =~ ^[Yy]$ ]]; then
+        docker exec -it UbuntuDev2 /bin/bash /root/customize_omz.sh --feedback --debug
+    fi
+}
+
+# Überwache die Dateien auf Änderungen
+echo "Watching for changes on: ${FILES[*]}"
+inotifywait -m -e modify "${FILES[@]}" --format '%w%f' |
+while read file; do
+    echo "Detected modification in $file"
+    restart_docker
+done
+
