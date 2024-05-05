@@ -36,5 +36,5 @@ echo -e "${DARK_BLUE}      .~B@@@@@@@@@@@&G7.                                   
 echo -e "${DARK_BLUE}       .~P##&@@@&GJ^.                                                                                                                                                                                   ${NOCOLOR}"
 echo -e "${DARK_BLUE}          .^77~.                                                                                                                                                                                        ${NOCOLOR}"
 echo -e "${NOCOLOR}                                                                                                                                                                                                        ${NOCOLOR}"
-echo -e "${YELLOW}                                          SCRIPTUS MAXIMUS${NOCOLOR}"
+echo -e "${YELLOW}                                          automa-it${NOCOLOR}"
 echo -e "                                        -------------------------------------"

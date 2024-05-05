@@ -1,10 +1,10 @@
-### Branching Guide for the "Scriptus Maximus" Project
+### Branching Guide for the "automa-it" Project
 
 ---
 
 ## Overview
 
-Branching is a key aspect of collaborative development. It allows multiple developers to work on different features or bug fixes simultaneously without impacting each other's work. This guide outlines the branching strategy for the "Scriptus Maximus" project, helping you manage branches efficiently.
+Branching is a key aspect of collaborative development. It allows multiple developers to work on different features or bug fixes simultaneously without impacting each other's work. This guide outlines the branching strategy for the "automa-it" project, helping you manage branches efficiently.
 
 ## Table of Contents
 
@@ -147,4 +147,4 @@ After creating a branch and pushing your changes, open a pull request on GitHub:
 
 ---
 
-Following this guide will help maintain a clean and efficient development workflow for the "Scriptus Maximus" project.
+Following this guide will help maintain a clean and efficient development workflow for the "automa-it" project.

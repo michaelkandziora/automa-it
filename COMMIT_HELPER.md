@@ -1,6 +1,6 @@
-### Commit Guide for Scriptus Maximus
+### Commit Guide for automa-it
 
-This commit guide aims to establish a clear and consistent structure for commit messages in the Scriptus Maximus project. By following the guidelines below, we can ensure that our commit history is easy to read, understand, and maintain. The structure we'll use is based on the **Conventional Commits** format, which is widely adopted and helps in generating changelogs, semantic versioning, and communicating the nature of changes more effectively.
+This commit guide aims to establish a clear and consistent structure for commit messages in the automa-it project. By following the guidelines below, we can ensure that our commit history is easy to read, understand, and maintain. The structure we'll use is based on the **Conventional Commits** format, which is widely adopted and helps in generating changelogs, semantic versioning, and communicating the nature of changes more effectively.
 
 ## Conventional Commits Format
 
@@ -28,7 +28,7 @@ The following types should be used to categorize commits:
 
 ### Scopes
 
-The **scope** is optional, but it helps identify which part of the project is affected by the commit. Some possible scopes for the Scriptus Maximus project are:
+The **scope** is optional, but it helps identify which part of the project is affected by the commit. Some possible scopes for the automa-it project are:
 
 - **general**
 - **header**

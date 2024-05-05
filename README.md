@@ -4,13 +4,13 @@ Here you can find a collection of useful bash scripts to quickly set up an envir
 
 It works... nvm how, it's just important that it works. Nothing to spend a lot of time on. #weekend-project
 
-Scriptus Maximus was created in a flash over a weekend, quick and dirty. Feel free to look over the code and correct it if necessary. 
+automa-it was created in a flash over a weekend, quick and dirty. Feel free to look over the code and correct it if necessary. 
 
 PS.: In some places, you might feel a "Brother, ewww..." vibe. Suggestions for improvement are gratefully accepted :-)
 
-# Scriptus Maximus
+# automa-it
 
-Scriptus Maximus is an automation-oriented bash toolkit designed to facilitate the management of system environments, shells, Python environments, Docker containers, and other technical aspects. The project provides a collection of scripts with basic configurations.
+automa-it is an automation-oriented bash toolkit designed to facilitate the management of system environments, shells, Python environments, Docker containers, and other technical aspects. The project provides a collection of scripts with basic configurations.
 
 The `config.toml` file can be tailored to different needs.
 @TODO<br>
@@ -187,7 +187,7 @@ Unit tests for checking and testing scripts are located in the `Test` directory.
 
 ## Contribution
 
-Contributions to Scriptus Maximus are welcome. Please submit your pull requests or open an issue if you want to suggest improvements.
+Contributions to automa-it are welcome. Please submit your pull requests or open an issue if you want to suggest improvements.
 
 ## License
 
