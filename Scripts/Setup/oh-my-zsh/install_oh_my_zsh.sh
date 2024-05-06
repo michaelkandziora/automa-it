@@ -2,6 +2,7 @@
 
 # Importiere Hilfsfunktionen für Konfigurationsmanagement
 source ./utils.sh
+echo $(pwd) # show me current working directory, I guess script can't find ./utils.sh file
 
 # Überprüfen der benötigten Befehle
 required_commands=("curl" "git" "zsh")
