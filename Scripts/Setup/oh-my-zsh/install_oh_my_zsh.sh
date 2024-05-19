@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Debugging aktivieren
+set -e
+
 # Importiere Hilfsfunktionen für Konfigurationsmanagement
 # Sucht nach der Datei 'utils.sh' ab dem Wurzelverzeichnis des Projekts
 # Start im aktuellen Verzeichnis
@@ -26,7 +29,7 @@ while : ; do
     # Gehe ein Verzeichnis höher
     dir=$(dirname "$dir")
 done
-echo $(pwd) # show me current working directory, I guess script can't find ./utils.sh file
+echo "Aktuelles Verzeichnis: $(pwd)" # show me current working directory, I guess script can't find ./utils.sh file
 
 # Überprüfen der benötigten Befehle
 required_commands=("curl" "git" "zsh")
@@ -71,13 +74,14 @@ if [[ -f "$HOME/.zshrc" ]]; then
 fi
 
 # Oh My Zsh Installation starten
-echo -e "${GREEN}Beginne mit der Installation von Oh My Zsh...${NC}"
+echo "Beginne mit der Installation von Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-echo -e "${GREEN}Oh My Zsh wurde erfolgreich installiert.${NC}"
+echo "Oh My Zsh wurde erfolgreich installiert."
 
-# Starte die Konfiguration
-# customize_omz.sh  # Annahme: Dieses Skript wird später erstellt und angepasst.
-
-# Make zsh default Shell
-echo "/usr/bin/zsh" | sudo tee -a /etc/shells
+# Zsh zur Liste der erlaubten Shells hinzufügen und als Standardshell setzen
+if ! grep -q "/usr/bin/zsh" /etc/shells; then
+    echo "/usr/bin/zsh" | sudo tee -a /etc/shells
+fi
 chsh -s $(which zsh)
+
+echo "Zsh wurde als Standardshell gesetzt. Bitte melden Sie sich ab und wieder an, um die Änderungen zu übernehmen."
