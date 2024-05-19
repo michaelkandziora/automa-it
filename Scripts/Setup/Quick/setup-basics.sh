@@ -1,3 +1,4 @@
+# @TODO validation, testing, ifs, etc
 bash ./Git/install_git.sh --silent
 bash ./Python/setup_python.sh --silent
 
