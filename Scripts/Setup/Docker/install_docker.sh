@@ -1,4 +1,5 @@
 #!/bin/bash
+# @TODO Beim installieren wird beim hinzufügen des GPGs Benutzer nach OK gefragt, ENTER bestätigen, fix for silent
 
 # Importiere Hilfsfunktionen und Konfigurationswerte
 source ./utils.sh
