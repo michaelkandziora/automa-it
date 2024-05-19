@@ -1,4 +1,5 @@
 #!/bin/bash
+# @TODO Beim installieren wird beim hinzufügen des GPGs Benutzer nach OK gefragt, ENTER bestätigen, fix for silent
 
 # Importiere Hilfsfunktionen und Konfigurationswerte
 source ./utils.sh
@@ -21,7 +22,7 @@ function install_docker() {
     echo -e "${GREEN}Docker wurde erfolgreich installiert.${NC}"
     
     # Konfigurationsdaten speichern, falls neu
-    save_config "docker" "installed" "true"
+    #save_config "docker" "installed" "true"
 }
 
 # Funktionen aus der utils.sh verwenden, um die Konfiguration zu laden und zu speichern
