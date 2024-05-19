@@ -6,7 +6,7 @@ set -e
 # Importiere Hilfsfunktionen für Konfigurationsmanagement
 # Sucht nach der Datei 'utils.sh' ab dem Wurzelverzeichnis des Projekts
 # Start im aktuellen Verzeichnis
-dir="."
+dir="$(pwd)"
 
 # Loop, um nach oben im Verzeichnisbaum zu gehen
 while : ; do
@@ -21,7 +21,7 @@ while : ; do
     fi
 
     # Abbruchbedingungen: root oder temp directory erreicht
-    if [[ "$dir" == "/" || "$dir" =~ ^/tmp/tmp\.* ]]; then
+    if [[ "$dir" == "/" ]]; then
         echo "utils.sh nicht gefunden. Suchbereich endete bei: $dir"
         break
     fi
