@@ -1,7 +1,7 @@
 [zsh]
-#pre = "python docker"
+#pre = "python docker vim"
 theme = "powerlevel10k"
-apt = "zsh highlight neofetch tldr tree vim python3-pip"
+apt = "zsh highlight neofetch tldr tree"
 pip = "pygments"
 
 [zsh.plugins]
