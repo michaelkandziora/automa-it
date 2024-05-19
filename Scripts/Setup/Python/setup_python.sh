@@ -159,3 +159,22 @@ echo "Bitte definiere mit 'pyenv global <VERSION>' deine gewünschte globale Pyt
 ## Konfigurationsdaten speichern
 ##save_config "python" "pyenv_version" "3.8.5, 3.7.8"
 ##save_config "python" "global_version" "3.8.5"
+
+
+
+
+
+# Folgende Rückmeldung in Console gesehen, @TODO
+
+# Found pyenv, but it is badly configured (pyenv command not found in $PATH). pyenv might not
+# work correctly for non-interactive shells (for example, when run from a script).
+# 
+# To fix this message, add these lines to the '.profile' and '.zprofile' files
+# in your home directory:
+# 
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# 
+# You'll need to restart your user session for the changes to take effect.
+# For more information go to https://github.com/pyenv/pyenv/#installation.
