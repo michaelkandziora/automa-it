@@ -1,7 +1,31 @@
 #!/bin/bash
 
 # Importiere Hilfsfunktionen für Konfigurationsmanagement
-source ./utils.sh
+# Sucht nach der Datei 'utils.sh' ab dem Wurzelverzeichnis des Projekts
+# Start im aktuellen Verzeichnis
+dir="."
+
+# Loop, um nach oben im Verzeichnisbaum zu gehen
+while : ; do
+    # Suche nach der utils.sh im aktuellen Verzeichnis
+    file_path=$(find "$dir" -maxdepth 1 -type f -name "utils.sh" -print -quit)
+    
+    # Prüfen, ob die Datei gefunden wurde
+    if [[ -n $file_path ]]; then
+        source "$file_path"
+        echo "Datei gefunden und gesourced: $file_path"
+        break
+    fi
+
+    # Abbruchbedingungen: root oder temp directory erreicht
+    if [[ "$dir" == "/" || "$dir" =~ ^/tmp/tmp\.* ]]; then
+        echo "utils.sh nicht gefunden. Suchbereich endete bei: $dir"
+        break
+    fi
+
+    # Gehe ein Verzeichnis höher
+    dir=$(dirname "$dir")
+done
 
 # Funktion zur Durchführung des Backups
 function perform_backup() {
@@ -23,9 +47,9 @@ function perform_backup() {
     echo -e "${GREEN}Backup wurde erfolgreich erstellt in: $backup_target_dir${NC}"
 
     # Backup-Konfiguration speichern
-    save_config "backup" "last_backup" "$(date +%F-%T)"
-    save_config "backup" "source" "$backup_sources"
-    save_config "backup" "target" "$backup_target_dir"
+    #save_config "backup" "last_backup" "$(date +%F-%T)"
+    #save_config "backup" "source" "$backup_sources"
+    #save_config "backup" "target" "$backup_target_dir"
 }
 
 # Starte das Backup

@@ -5,8 +5,8 @@ class Config:
         self.root_path = './Scripts/'
         self.common_files = ['header.sh', 'menu.sh', 'utils.sh', 'config.toml']
         self.tags = {
-            'default': ['Setup/oh-my-zsh', 'Setup/Docker', 'Setup/Python'],
-            'pro': ['Setup/oh-my-zsh', 'Setup/Docker', 'Setup/Python', 'Setup/Backup'],
+            'default': ['Setup/oh-my-zsh', 'Setup/Docker', 'Setup/Python', 'Setup/Vim', 'Setup/Git'],
+            'pro': ['Setup/oh-my-zsh', 'Setup/Docker', 'Setup/Python', 'Setup/Vim', 'Setup/Git', 'Setup/Backup'],
             'zsh': ['Setup/oh-my-zsh'],
             'docker': ['Setup/Docker'],
             'python': ['Setup/Python'],
