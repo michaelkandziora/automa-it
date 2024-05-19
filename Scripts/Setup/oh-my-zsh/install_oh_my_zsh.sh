@@ -42,7 +42,7 @@ done
 
 if [[ ${#missing_commands[@]} -ne 0 ]]; then
     echo "Folgende Befehle fehlen: ${missing_commands[*]}"
-    if [[ $silent_mode == true ]] || [[ $(ask_yes_no "Möchten Sie die fehlenden Befehle jetzt installieren?" "y") == 0 ]]; then
+    if [[ $silent_mode == true ]] || $(ask_yes_no "Möchten Sie die fehlenden Befehle jetzt installieren?" "y"); then
         if is_root; then
             apt-get update && apt-get install -y "${missing_commands[@]}"
         else
@@ -67,7 +67,7 @@ fi
 
 # Überprüfen, ob eine .zshrc-Datei existiert und ob eine Sicherungskopie erstellt werden soll
 if [[ -f "$HOME/.zshrc" ]]; then
-    if [[ $silent_mode == true ]] || [[ $(ask_yes_no "Möchten Sie eine Sicherheitskopie Ihrer .zshrc erstellen?" "y") == 0 ]]; then
+    if [[ $silent_mode == true ]] || $(ask_yes_no "Möchten Sie eine Sicherheitskopie Ihrer .zshrc erstellen?" "y"); then
         cp "$HOME/.zshrc" "$HOME/.zshrc.bak"
         echo "Eine Sicherungskopie wurde als .zshrc.bak erstellt."
     fi
