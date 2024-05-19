@@ -27,7 +27,7 @@ function setup_clamav() {
     echo "Tägliche Scans sind eingerichtet für $scan_path."
 
     # Konfigurationsdaten speichern
-    save_config "clamav" "scan_path" "$scan_path"
+    #save_config "clamav" "scan_path" "$scan_path"
 }
 
 # Starte die Installation und Konfiguration von ClamAV

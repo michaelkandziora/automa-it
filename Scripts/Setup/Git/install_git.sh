@@ -20,11 +20,11 @@ function install_git() {
         echo "Einige Git-Konfigurationsdaten fehlen."
         if [[ -z "$git_name" ]]; then
             read -p "Bitte geben Sie Ihren Git Benutzernamen ein: " git_name
-            save_config "git" "name" "$git_name"
+            #save_config "git" "name" "$git_name"
         fi
         if [[ -z "$git_email" ]]; then
             read -p "Bitte geben Sie Ihre Git E-Mail Adresse ein: " git_email
-            save_config "git" "email" "$git_email"
+            #save_config "git" "email" "$git_email"
         fi
     fi
 

@@ -26,7 +26,7 @@ function setup_nodejs() {
     fi
 
     # Node.js-Version in die config.toml speichern
-    save_config "node_js" "version" "$node_version"
+    #save_config "node_js" "version" "$node_version"
 }
 
 # Starte die Installation von Node.js und npm

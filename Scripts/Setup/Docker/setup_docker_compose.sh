@@ -23,7 +23,7 @@ function setup_docker_compose() {
     fi
 
     # Konfigurationsdaten speichern
-    save_config "docker_compose" "version" "$docker_compose_version"
+    #save_config "docker_compose" "version" "$docker_compose_version"
 }
 
 # Starte die Installation von Docker Compose

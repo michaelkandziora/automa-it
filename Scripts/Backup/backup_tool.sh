@@ -23,9 +23,9 @@ function perform_backup() {
     echo -e "${GREEN}Backup wurde erfolgreich erstellt in: $backup_target_dir${NC}"
 
     # Backup-Konfiguration speichern
-    save_config "backup" "last_backup" "$(date +%F-%T)"
-    save_config "backup" "source" "$backup_sources"
-    save_config "backup" "target" "$backup_target_dir"
+    #save_config "backup" "last_backup" "$(date +%F-%T)"
+    #save_config "backup" "source" "$backup_sources"
+    #save_config "backup" "target" "$backup_target_dir"
 }
 
 # Starte das Backup

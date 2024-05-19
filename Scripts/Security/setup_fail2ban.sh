@@ -33,9 +33,9 @@ function setup_fail2ban() {
     echo "Ban-Zeit: $ban_time Sekunden, Suchzeit: $find_time Sekunden, Max. Versuche: $max_retry."
 
     # Konfigurationsdaten speichern
-    save_config "fail2ban" "ban_time" "$ban_time"
-    save_config "fail2ban" "find_time" "$find_time"
-    save_config "fail2ban" "max_retry" "$max_retry"
+    #save_config "fail2ban" "ban_time" "$ban_time"
+    #save_config "fail2ban" "find_time" "$find_time"
+    #save_config "fail2ban" "max_retry" "$max_retry"
 }
 
 # Starte die Installation und Konfiguration von Fail2Ban

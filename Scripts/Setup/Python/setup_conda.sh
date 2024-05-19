@@ -25,8 +25,8 @@ function setup_conda() {
     echo "Eine neue Conda-Umgebung namens 'myenv' mit Python 3.8 ist erstellt und aktiviert worden."
 
     # Konfigurationsdaten speichern
-    save_config "python" "conda_env" "myenv"
-    save_config "python" "python_version" "3.8"
+    #save_config "python" "conda_env" "myenv"
+    #save_config "python" "python_version" "3.8"
 }
 
 # Starte die Installation von Conda und Python

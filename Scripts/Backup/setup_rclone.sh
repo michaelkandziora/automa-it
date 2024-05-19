@@ -19,8 +19,8 @@ function setup_rclone() {
     backup_folder_path=${backup_folder_path:-"$HOME/projects"}
 
     # Speichere die Konfigurationsdaten
-    save_config "rclone" "cloud_service" "$cloud_service"
-    save_config "rclone" "backup_folder_path" "$backup_folder_path"
+    #save_config "rclone" "cloud_service" "$cloud_service"
+    #save_config "rclone" "backup_folder_path" "$backup_folder_path"
 
     echo -e "${GREEN}rclone wurde erfolgreich für $cloud_service konfiguriert.${NC}"
 }

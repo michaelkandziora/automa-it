@@ -25,7 +25,7 @@ function install_custom_packages() {
     echo -e "${GREEN}Alle benutzerdefinierten Pakete wurden erfolgreich installiert.${NC}"
 
     # Konfigurationsdaten speichern (optional)
-    save_config "apt_packages" "installed_packages" "${apt_packages}"
+    #save_config "apt_packages" "installed_packages" "${apt_packages}"
 }
 
 # Starte die Installation der benutzerdefinierten Pakete

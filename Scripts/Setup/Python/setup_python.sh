@@ -157,5 +157,5 @@ select_versions
 echo "Bitte definiere mit 'pyenv global <VERSION>' deine gewünschte globale Python Version"
 
 ## Konfigurationsdaten speichern
-#save_config "python" "pyenv_version" "3.8.5, 3.7.8"
-#save_config "python" "global_version" "3.8.5"
+##save_config "python" "pyenv_version" "3.8.5, 3.7.8"
+##save_config "python" "global_version" "3.8.5"
