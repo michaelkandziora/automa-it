@@ -25,8 +25,8 @@ def main():
         if remote_sha != local_sha:
             print("Change detected. Updating...")
             subprocess.run(['docker', 'compose', 'down'])  # Stop the current container
-            subprocess.run(['docker', 'rm', '-f', 'scriptusmaximus'])  # Remove the container
-            subprocess.run(['docker', 'compose', 'up', '-d'])  # Start the container again
+            #subprocess.run(['docker', 'rm', '-f', 'scriptusmaximus'])  # Remove the container
+            subprocess.run(['docker', 'compose', 'up', '--build', '-d'])  # Rebuild and start the container again
             subprocess.run(['git', 'pull', 'origin', 'main'])  # Pull the latest changes
             previous_sha = remote_sha
         else:
