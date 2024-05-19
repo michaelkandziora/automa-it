@@ -79,6 +79,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 echo "Oh My Zsh wurde erfolgreich installiert."
 
 # Zsh zur Liste der erlaubten Shells hinzufügen und als Standardshell setzen
+echo "Zsh wird als Standardshell gesetzt, möglicherweise müssen sie dies mit ihrem Passwort bestätigen."
+
 if ! grep -q "/usr/bin/zsh" /etc/shells; then
     echo "/usr/bin/zsh" | sudo tee -a /etc/shells
 fi
