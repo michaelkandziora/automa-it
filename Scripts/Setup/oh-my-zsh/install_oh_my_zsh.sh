@@ -42,7 +42,7 @@ done
 
 if [[ ${#missing_commands[@]} -ne 0 ]]; then
     echo "Folgende Befehle fehlen: ${missing_commands[*]}"
-    if [[ $silent_mode == false && $(ask_yes_no "Möchten Sie die fehlenden Befehle jetzt installieren?" "y") == 0 ]] || [[ $silent_mode == true ]]; then
+    if [[ $silent_mode == true ]] || [[ $(ask_yes_no "Möchten Sie die fehlenden Befehle jetzt installieren?" "y") == 0 ]]; then
         if is_root; then
             apt-get update && apt-get install -y "${missing_commands[@]}"
         else
