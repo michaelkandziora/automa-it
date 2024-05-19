@@ -9,6 +9,7 @@ cd-ls = true
 F-Sy-H = true
 zsh-vi-mode = true
 zsh-autosuggestions = true
+zsh-interactive-cd = true
 git = true
 docker = true
 pyenv = true
