@@ -67,7 +67,7 @@ fi
 
 # Überprüfen, ob eine .zshrc-Datei existiert und ob eine Sicherungskopie erstellt werden soll
 if [[ -f "$HOME/.zshrc" ]]; then
-    if [[ $silent_mode == false && $(ask_yes_no "Möchten Sie eine Sicherheitskopie Ihrer .zshrc erstellen?" "y") == 0 ]] || [[ $silent_mode == true ]]; then
+    if [[ $silent_mode == true ]] || [[ $(ask_yes_no "Möchten Sie eine Sicherheitskopie Ihrer .zshrc erstellen?" "y") == 0 ]]; then
         cp "$HOME/.zshrc" "$HOME/.zshrc.bak"
         echo "Eine Sicherungskopie wurde als .zshrc.bak erstellt."
     fi
