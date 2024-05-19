@@ -23,7 +23,6 @@ function is_root() {
     fi
 }
 
-
 # Funktion zur Bereinigung des Eingabepuffers
 function clear_input() {
     read -t 0.1 -n 10000 discard  # Versucht, alle wartenden Eingaben zu verwerfen
@@ -54,7 +53,7 @@ function ask_yes_no() {
             [Yy]* ) return 0;;
             [Nn]* ) return 1;;
             "" ) if [[ "$default" == "y" ]]; then return 0; else return 1; fi;;
-            * ) echo "$answer Bitte antworten Sie mit 'y' oder 'n'.";;
+            * ) echo "Bitte antworten Sie mit 'y' oder 'n'.";;
         esac
     done
 }
@@ -70,6 +69,7 @@ function check_command() {
     [[ $feedback_mode == true ]] && echo "+ '$command' wurde nicht gefunden"
     return 1
 }
+
 function install_pip() {
     local command=$1
 
@@ -175,12 +175,12 @@ function install_apt() {
     # Sind wir hier angekommen, sollte der gewünschte Befehl installiert worden sein
     return 0
 }
+
 # Funktion zum überprüfen auf vorhanden sein und installieren von Befehlen
 function check_and_install_command() {
     local command=$1
 
     check_command "$command" || install_apt "$command" || return 1; return 0
-
 }
 
 function load_config() {
@@ -210,10 +210,6 @@ function load_config() {
         }')
     fi
 }
-
-
-
-
 
 # Auswertung der Skriptoptionen
 for option in "$@"; do
