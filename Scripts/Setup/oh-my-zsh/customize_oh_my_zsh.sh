@@ -2,12 +2,11 @@
 # bash customize_omz.sh --debug
 set -e 
 
-dir=$(pwd)
 
 # Importiere Hilfsfunktionen für Konfigurationsmanagement
 # Sucht nach der Datei 'utils.sh' ab dem Wurzelverzeichnis des Projekts
 # Start im aktuellen Verzeichnis
-#dir="."
+dir=$(pwd)
 
 # Loop, um nach oben im Verzeichnisbaum zu gehen
 while : ; do
@@ -89,7 +88,7 @@ function make_config() {
         for requirement in "${requirements[@]}"; do
             [[ $feedback_mode == true ]] && echo "+ prüfe '$requirement'"
             # Kein Prüfen ob gültig als Befehl, user will's also sledgehammer mode!
-            if ! check_command "pip"; then
+            if ! check_command $requirement; then
                 if is_root; then install_apt $requirement "y"; else install_apt $requirement; fi
                 [[ $feedback_mode == true ]] && echo "+ '$requirement' wurde installiert"
             else
