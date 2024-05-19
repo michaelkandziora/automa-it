@@ -196,6 +196,21 @@ function make_plugins() {
                             cd ${ZSH_CUSTOM}/plugins/zsh-autosuggestions && git pull > /dev/null 2>&1 && cd $dir
                         fi
                         ;;
+                    "zsh-interactive-cd")
+                        if [[ ! -d ${ZSH_CUSTOM}/plugins/zsh-interactive-cd ]]; then
+                            [[ $feedback_mode == true ]] &&  echo "PLUGINS: Installiere $plugin"
+                            #git clone https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-interactive-cd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-interactive-cd > /dev/null 2>&1
+                            #[[ $feedback_mode == true ]] && echo "+ 'zsh-interactive-cd' wurde erfolgreich nach ${ZSH_CUSTOM}/plugins/zsh-interactive-cd/ installiert"
+
+                            [[ $feedback_mode == true ]] && echo "+ von 'zsh-interactive-cd' benötigte Abhängigkeit fzf wird installiert"
+                            git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+                            ~/.fzf/install
+                            [[ $feedback_mode == true ]] && echo "+ von 'zsh-interactive-cd' benötigte Abhängigkeit fzf wurde installiert"
+                        else
+                            [[ $feedback_mode == true ]] &&  echo "+ Das Plugin $plugin ist bereits installiert, update.."
+                            cd ${ZSH_CUSTOM}/plugins/zsh-interactive-cd && git pull > /dev/null 2>&1 && cd $dir
+                        fi
+                        ;;
                     "git")
                         ;;  # git ist normalerweise vorinstalliert
                     "docker")
