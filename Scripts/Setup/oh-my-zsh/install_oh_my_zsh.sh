@@ -78,3 +78,6 @@ echo -e "${GREEN}Oh My Zsh wurde erfolgreich installiert.${NC}"
 # Starte die Konfiguration
 # customize_omz.sh  # Annahme: Dieses Skript wird später erstellt und angepasst.
 
+# Make zsh default Shell
+echo "/usr/bin/zsh" | sudo tee -a /etc/shells
+chsh -s $(which zsh)
