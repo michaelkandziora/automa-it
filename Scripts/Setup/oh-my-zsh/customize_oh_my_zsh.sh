@@ -179,7 +179,7 @@ function make_plugins() {
                             git clone https://github.com/zshzoo/cd-ls ${ZSH_CUSTOM}/plugins/cd-ls > /dev/null 2>&1
                             [[ $feedback_mode == true ]] && echo "+ 'cd-ls' wurde erfolgreich nach ${ZSH_CUSTOM}/plugins/cd-ls/ installiert"
 
-                            if ask_yes_no "Möchten Sie 'ls' durch 'tree' ersetzen?"; then
+                            if $(ask_yes_no "Möchten Sie 'ls' durch 'tree' ersetzen?" "y"); then
                                 sed -i 's|eval ${CD_LS_COMMAND:-ls}|eval ${CD_LS_COMMAND:-"tree -L 2 -a"}|' ${ZSH_CUSTOM}/plugins/cd-ls/cd-ls.plugin.zsh
                                 [[ $feedback_mode == true ]] &&  echo "+ cd-ls wurde angepasst, um 'tree' zu verwenden."
                             fi
