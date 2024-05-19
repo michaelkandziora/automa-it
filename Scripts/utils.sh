@@ -175,12 +175,12 @@ function install_apt() {
     # Sind wir hier angekommen, sollte der gewünschte Befehl installiert worden sein
     return 0
 }
-
 # Funktion zum überprüfen auf vorhanden sein und installieren von Befehlen
 function check_and_install_command() {
     local command=$1
 
     check_command "$command" || install_apt "$command" || return 1; return 0
+
 }
 
 function load_config() {
@@ -210,6 +210,10 @@ function load_config() {
         }')
     fi
 }
+
+
+
+
 
 # Auswertung der Skriptoptionen
 for option in "$@"; do
