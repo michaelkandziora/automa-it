@@ -33,11 +33,11 @@ DOCKER_GPG_URL="https://download.docker.com/linux/ubuntu/gpg"
 DOCKER_GPG_KEYRING="/etc/apt/trusted.gpg.d/docker-archive-keyring.gpg"
 
 # Entferne alte Docker-Schlüssel aus dem veralteten Schlüsselbund
-$SUDO apt-key del $($$SUDO apt-key list | grep -A 1 "Docker" | grep "pub" | awk '{print $2}' | cut -d'/' -f2)
+$SUDO apt-key del $($SUDO apt-key list | grep -A 1 "Docker" | grep "pub" | awk '{print $2}' | cut -d'/' -f2)
 check_success "Alte Docker-Schlüssel konnten nicht entfernt werden."
 
 # Füge den Docker GPG-Schlüssel in den neuen Speicherort ein
-curl -fsSL $DOCKER_GPG_URL | $$SUDO gpg --dearmor -o $DOCKER_GPG_KEYRING
+curl -fsSL $DOCKER_GPG_URL | $SUDO gpg --dearmor -o $DOCKER_GPG_KEYRING
 check_success "Docker GPG-Schlüssel konnte nicht heruntergeladen oder gespeichert werden."
 
 # Aktualisiere die Paketliste
