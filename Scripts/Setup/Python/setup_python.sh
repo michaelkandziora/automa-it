@@ -48,15 +48,15 @@ function setup_python() {
 
     # Funktion zum Einfügen des Textes in eine Datei, falls der Text noch nicht existiert
     add_to_file() {
-    file="$1"
-    grep -qF -- "$text_to_add" "$file" || echo "$text_to_add" >> "$file"
+        file="$1"
+        grep -qF -- "$text_to_add" "$file" || echo "$text_to_add" >> "$file"
     }
 
-    text_to_add="                               \
-    # Pyenv in die Shell integrieren            \
-    export PATH=\"\$HOME/.pyenv/bin:\$PATH\"    \
-    eval \"\$(pyenv init -)\"                   \
-    eval \"\$(pyenv virtualenv-init -)\"        \
+    text_to_add="                               
+    # Pyenv in die Shell integrieren            
+    export PATH=\"\$HOME/.pyenv/bin:\$PATH\"    
+    eval \"\$(pyenv init -)\"                   
+    eval \"\$(pyenv virtualenv-init -)\"        
     "
 
     # Füge Text zu .bashrc hinzu, falls die Datei existiert
@@ -69,11 +69,11 @@ function setup_python() {
     add_to_file "$HOME/.zshrc"
     fi
 
-    text_to_add="                            \
-    export PYENV_ROOT=\"\$HOME/.pyenv\"      \
-    export PATH=\"\$PYENV_ROOT/bin:\$PATH\"  \
-    eval \"\$(pyenv init \-\-path)\"         \
-    eval \"\$(pyenv virtualenv-init -)\"     \
+    text_to_add="                            
+    export PYENV_ROOT=\"\$HOME/.pyenv\"      
+    export PATH=\"\$PYENV_ROOT/bin:\$PATH\"  
+    eval \"\$(pyenv init \-\-path)\"         
+    eval \"\$(pyenv virtualenv-init -)\"     
     "
 
     # Füge Text zu .bashrc hinzu, falls die Datei existiert
