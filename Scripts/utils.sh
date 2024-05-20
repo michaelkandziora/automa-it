@@ -14,12 +14,27 @@ while [[ "$1" != "" ]]; do
     shift
 done
 
+# Check for root or sudo privileges
+if [ "$EUID" -ne 0 ]; then
+    SUDO="sudo"
+else
+    SUDO=""
+fi
+
 # Funktion, um zu überprüfen, ob das Skript als Root ausgeführt wird
 function is_root() {
     if [[ $(id -u) -eq 0 ]]; then
         return 0
     else
         return 1
+    fi
+}
+
+# Funktion zur Überprüfung, ob ein Befehl erfolgreich ausgeführt wurde
+function check_success() {
+    if [ $? -ne 0 ]; then
+        echo "Fehler: $1"
+        exit 1
     fi
 }
 
