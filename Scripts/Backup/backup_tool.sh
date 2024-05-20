@@ -27,30 +27,44 @@ while : ; do
     dir=$(dirname "$dir")
 done
 
+# Backup Tool installieren
+function install() {
+    [[ $feedback_mode == true ]] && echo -e "Beginne mit der Installation..."
+    requirement="timeshift"
+
+    if ! check_command $requirement; then
+        if is_root; then install_apt $requirement "y"; else install_apt $requirement; fi
+        check_success "$requirement konnte nicht installiert werden."
+        
+        [[ $feedback_mode == true ]] && echo "+ '$requirement' wurde installiert"
+    else
+        [[ $feedback_mode == true ]] && echo "+ '$requirement' ist bereits installiert"
+    fi
+
+    # @TODO installier logik checken, installieren, feedback kann nach utils ausgelagert werden, is immer gleich
+    
+}
+
 # Funktion zur Durchführung des Backups
 function perform_backup() {
-    echo -e "${GREEN}Beginne mit dem Backup...${NC}"
+    [[ $feedback_mode == true ]] && echo -e "Beginne mit dem ersten Snapshot..."
 
-    # Backup-Zielverzeichnis
-    backup_target_dir="$HOME/backups"
+    key=$(date +%F)
+    $SUDO timeshift --create --comments "snapshot_$key"
+    check_success "Snapshot konnte nicht erstellt werden."
 
-    # Überprüfen, ob das Backup-Verzeichnis existiert, sonst erstellen
-    mkdir -p "$backup_target_dir"
+    [[ $feedback_mode == true ]] && echo "+ Snapshot 'snapshot_$key' wurde erfolgreich erstellt"
 
-    # Konfigurationswerte aus config.toml laden
-    load_config "backup"
-    backup_sources=${backup_sources:-"$HOME/projects"}
+    [[ $feedback_mode == true ]] && echo "Nutze 'sudo timeshift --create --comments \"snapshot_BEZEICHNUNG\"' um einen Snapshot zu erstellen."
+    [[ $feedback_mode == true ]] && echo "Nutze 'sudo timeshift --list' um eine Liste aller erstellten Snapshots zu erhalten."
 
-    # Rsync-Befehl ausführen
-    rsync -avh --progress $backup_sources $backup_target_dir
-
-    echo -e "${GREEN}Backup wurde erfolgreich erstellt in: $backup_target_dir${NC}"
-
-    # Backup-Konfiguration speichern
+    
+    # Backup-Konfiguration speichern @TODO
     #save_config "backup" "last_backup" "$(date +%F-%T)"
     #save_config "backup" "source" "$backup_sources"
     #save_config "backup" "target" "$backup_target_dir"
 }
 
 # Starte das Backup
+install
 perform_backup
