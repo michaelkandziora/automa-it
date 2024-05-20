@@ -15,9 +15,9 @@ install_yarn_mac() {
 # Funktion, um Yarn unter Linux zu installieren
 install_yarn_linux() {
     echo "Installiere Yarn auf Linux..."
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt update && sudo apt install yarn
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | $SUDO apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | $SUDO tee /etc/apt/sources.list.d/yarn.list
+    $SUDO apt update && $SUDO apt install yarn
     if [ $? -eq 0 ]; then
         echo "Yarn wurde erfolgreich auf Linux installiert."
     else

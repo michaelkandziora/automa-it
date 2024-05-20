@@ -47,16 +47,16 @@ if [[ ${#missing_commands[@]} -ne 0 ]]; then
             apt-get update && apt-get install -y "${missing_commands[@]}"
         else
             if [[ $silent_mode == true ]]; then
-                # Im Silent-Modus, überprüfe ob sudo ohne Passwort verwendet werden kann
-                if sudo -ln &>/dev/null; then
-                    sudo apt-get update && sudo apt-get install -y "${missing_commands[@]}"
+                # Im Silent-Modus, überprüfe ob $SUDO ohne Passwort verwendet werden kann
+                if $SUDO -ln &>/dev/null; then
+                    $SUDO apt-get update && $SUDO apt-get install -y "${missing_commands[@]}"
                 else
-                    echo "Sudo benötigt ein Passwort. Bitte führen Sie das Skript mit Root-Rechten oder ohne Silent-Modus aus."
+                    echo "$SUDO benötigt ein Passwort. Bitte führen Sie das Skript mit Root-Rechten oder ohne Silent-Modus aus."
                     exit 1
                 fi
             else
-                # Im nicht-silent Modus, lassen wir die Standard-Sudo-Passwortabfrage zu
-                sudo apt-get update && sudo apt-get install -y "${missing_commands[@]}"
+                # Im nicht-silent Modus, lassen wir die Standard-$SUDO-Passwortabfrage zu
+                $SUDO apt-get update && $SUDO apt-get install -y "${missing_commands[@]}"
             fi
         fi
     else
@@ -82,7 +82,7 @@ echo "Oh My Zsh wurde erfolgreich installiert."
 echo "Zsh wird als Standardshell gesetzt, möglicherweise müssen sie dies mit ihrem Passwort bestätigen."
 
 if ! grep -q "/usr/bin/zsh" /etc/shells; then
-    echo "/usr/bin/zsh" | sudo tee -a /etc/shells
+    echo "/usr/bin/zsh" | $SUDO tee -a /etc/shells
 fi
 chsh -s $(which zsh)
 

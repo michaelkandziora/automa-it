@@ -14,11 +14,11 @@ while [[ "$1" != "" ]]; do
     shift
 done
 
-# Check for root or sudo privileges
+# Check for root or $SUDO privileges
 if [ "$EUID" -ne 0 ]; then
-    SUDO="sudo"
+    $SUDO="$SUDO"
 else
-    SUDO=""
+    $SUDO=""
 fi
 
 # Funktion, um zu überprüfen, ob das Skript als Root ausgeführt wird
@@ -140,21 +140,21 @@ function install_apt() {
                 [[ $debug_mode == true ]] && echo " (root): apt error code $error_code"
                 return 1
             fi
-        # Silent Mode aktiv und nicht ROOT aber kann sudo silent ausführen
-        elif sudo -ln &>/dev/null; then
+        # Silent Mode aktiv und nicht ROOT aber kann $SUDO silent ausführen
+        elif $SUDO -ln &>/dev/null; then
             [[ $debug_mode == true ]] && echo " (silent): apt-get install -y '$command'"
-            sudo apt-get update > /dev/null 2>&1 && sudo apt-get install -y "$command" > /dev/null 2>&1
+            $SUDO apt-get update > /dev/null 2>&1 && $SUDO apt-get install -y "$command" > /dev/null 2>&1
             error_code=$?
             if [[ $error_code != 0 ]]; then 
                 [[ $debug_mode == true ]] && echo " (slient): apt error code $error_code"
                 return 1
             fi
-        # Silent Mode aktiv und nicht ROOT und kann sudo NICHT silent ausführen
+        # Silent Mode aktiv und nicht ROOT und kann $SUDO NICHT silent ausführen
         else
             # ERROR mit schlüssiger Erklärung
             echo "Der Befehl $command wurde nicht gefunden und das Skript versucht diesen für Sie zu installieren, da das Silent-Flag gesetzt wurde."
-            echo "Das Skript wurde nicht mit ROOT rechten gestartet. Ihr System ist nicht konfiguriert den Sudo Prefix 'silent' ohne Benutzerinteraktion auszuführen."
-            echo "Sudo benötigt ein Passwort. Bitte führen Sie das Skript mit Root-Rechten oder ohne Silent-Flag aus."
+            echo "Das Skript wurde nicht mit ROOT rechten gestartet. Ihr System ist nicht konfiguriert den $SUDO Prefix 'silent' ohne Benutzerinteraktion auszuführen."
+            echo "$SUDO benötigt ein Passwort. Bitte führen Sie das Skript mit Root-Rechten oder ohne Silent-Flag aus."
             echo ""
             return 1
         fi
@@ -172,8 +172,8 @@ function install_apt() {
         # USER
         else
             [[ $feedback_mode == true ]] && echo "Eventuell müssen Sie zum installieren von '$command' ihr Passwort eingeben"
-            [[ $debug_mode == true ]] && echo " (user) sudo apt-get install -y '$command'"
-            sudo apt-get update && sudo apt-get install -y "$command"
+            [[ $debug_mode == true ]] && echo " (user) $SUDO apt-get install -y '$command'"
+            $SUDO apt-get update && $SUDO apt-get install -y "$command"
             error_code=$?
             if [[ $error_code != 0 ]]; then 
                 [[ $debug_mode == true ]] && echo " (user) apt error code $error_code"

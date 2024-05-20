@@ -8,8 +8,8 @@ function setup_vim() {
     echo -e "${GREEN}Beginne mit der Installation von Vim...${NC}"
 
     # Installieren von Vim
-    sudo apt-get update
-    sudo apt-get install -y vim
+    $SUDO apt-get update
+    $SUDO apt-get install -y vim
 
     # Vim-Plug für Plugin-Management installieren
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

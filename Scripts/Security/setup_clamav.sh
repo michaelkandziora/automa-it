@@ -32,12 +32,12 @@ function setup_clamav() {
     echo -e "${GREEN}Beginne mit der Installation von ClamAV...${NC}"
 
     # ClamAV installieren
-    sudo apt-get update
-    sudo apt-get install -y clamav clamav-daemon
+    $SUDO apt-get update
+    $SUDO apt-get install -y clamav clamav-daemon
 
     # Signaturen updaten
     echo "Update der ClamAV Virus-Datenbank..."
-    sudo freshclam
+    $SUDO freshclam
 
     # Konfigurationswerte aus config.toml laden
     load_config "clamav"

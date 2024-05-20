@@ -35,8 +35,8 @@ function install_git() {
     load_config "git"
 
     # Installationsprozess starten
-    sudo apt-get update
-    sudo apt-get install -y git
+    $SUDO apt-get update
+    $SUDO apt-get install -y git
     echo -e "${GREEN}Git wurde erfolgreich installiert.${NC}"
 
     # Konfigurationsdaten prüfen und ggf. Benutzerabfragen durchführen

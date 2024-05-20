@@ -38,12 +38,12 @@ function install_custom_packages() {
     IFS=',' read -r -a packages <<< "${apt_packages}"
 
     # Paketliste aktualisieren
-    sudo apt-get update
+    $SUDO apt-get update
 
     # Jedes Paket installieren
     for package in "${packages[@]}"; do
         echo -e "${YELLOW}Installiere Paket: $package${NC}"
-        sudo apt-get install -y "$package"
+        $SUDO apt-get install -y "$package"
     done
 
     echo -e "${GREEN}Alle benutzerdefinierten Pakete wurden erfolgreich installiert.${NC}"

@@ -33,15 +33,15 @@ DOCKER_GPG_URL="https://download.docker.com/linux/ubuntu/gpg"
 DOCKER_GPG_KEYRING="/etc/apt/trusted.gpg.d/docker-archive-keyring.gpg"
 
 # Entferne alte Docker-Schlüssel aus dem veralteten Schlüsselbund
-$SUDO apt-key del $($SUDO apt-key list | grep -A 1 "Docker" | grep "pub" | awk '{print $2}' | cut -d'/' -f2)
+$$SUDO apt-key del $($$SUDO apt-key list | grep -A 1 "Docker" | grep "pub" | awk '{print $2}' | cut -d'/' -f2)
 check_success "Alte Docker-Schlüssel konnten nicht entfernt werden."
 
 # Füge den Docker GPG-Schlüssel in den neuen Speicherort ein
-curl -fsSL $DOCKER_GPG_URL | $SUDO gpg --dearmor -o $DOCKER_GPG_KEYRING
+curl -fsSL $DOCKER_GPG_URL | $$SUDO gpg --dearmor -o $DOCKER_GPG_KEYRING
 check_success "Docker GPG-Schlüssel konnte nicht heruntergeladen oder gespeichert werden."
 
 # Aktualisiere die Paketliste
-$SUDO apt update
+$$SUDO apt update
 check_success "Paketliste konnte nicht aktualisiert werden."
 
 echo "Der Docker GPG-Schlüssel wurde erfolgreich aktualisiert und die Paketliste wurde neu geladen."
@@ -54,7 +54,7 @@ echo "Der Docker GPG-Schlüssel wurde erfolgreich aktualisiert und die Paketlist
 #
 #
 ## List apt keys and search for Docker key
-#APT_KEY_OUTPUT=$($SUDO apt-key list)
+#APT_KEY_OUTPUT=$($$SUDO apt-key list)
 #DOCKER_KEY=$(echo "$APT_KEY_OUTPUT" | awk '/Docker Release/ {getline; print substr($1, length($1)-7)}')
 #
 ## Check if Docker key exists
@@ -63,7 +63,7 @@ echo "Der Docker GPG-Schlüssel wurde erfolgreich aktualisiert und die Paketlist
 #fi
 #
 ## Export Docker key
-#$SUDO apt-key export "$DOCKER_KEY" | $SUDO gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+#$$SUDO apt-key export "$DOCKER_KEY" | $$SUDO gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
 #if [ $? -eq 0 ]; then
 #    echo "Key $DOCKER_KEY has been exported to /etc/apt/trusted.gpg.d/docker.gpg."
 #else
@@ -71,7 +71,7 @@ echo "Der Docker GPG-Schlüssel wurde erfolgreich aktualisiert und die Paketlist
 #fi
 #
 ## Delete Docker key from trusted.gpg
-#$SUDO apt-key --keyring /etc/apt/trusted.gpg del "$DOCKER_KEY"
+#$$SUDO apt-key --keyring /etc/apt/trusted.gpg del "$DOCKER_KEY"
 #if [ $? -eq 0 ]; then
 #    echo "Key $DOCKER_KEY has been removed from /etc/apt/trusted.gpg."
 #else

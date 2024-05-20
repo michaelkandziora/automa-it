@@ -9,8 +9,8 @@ function install_adb() {
         echo "ADB is already installed."
     else
         # Install ADB using package manager (assumed to be apt)
-        sudo apt update
-        sudo apt install -y adb
+        $SUDO apt update
+        $SUDO apt install -y adb
 
         # Verify installation
         if command -v adb &> /dev/null; then

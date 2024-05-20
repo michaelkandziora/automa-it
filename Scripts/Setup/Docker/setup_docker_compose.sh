@@ -36,8 +36,8 @@ function setup_docker_compose() {
     docker_compose_version=${docker_compose_version:-"1.29.2"}
 
     # Download und Installation von Docker Compose
-    sudo curl -L "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
+    $SUDO curl -L "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    $SUDO chmod +x /usr/local/bin/docker-compose
 
     # Überprüfung der Installation
     if [[ $(docker-compose --version) ]]; then

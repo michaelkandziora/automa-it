@@ -31,7 +31,7 @@ done
 function setup_rclone() {
     echo -e "${GREEN}Beginne mit der Konfiguration von rclone für Cloud-Backups...${NC}"
 
-    # curl https://rclone.org/install.sh | sudo bash @TODO
+    # curl https://rclone.org/install.sh | $SUDO bash @TODO
 
     # Starte die Konfiguration von rclone
     echo "Bitte folge den Anweisungen auf dem Bildschirm zur Einrichtung deines Cloud-Speichers:"

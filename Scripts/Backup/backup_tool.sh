@@ -50,23 +50,23 @@ function perform_backup() {
     [[ $feedback_mode == true ]] && echo -e "Beginne mit dem ersten Snapshot..."
 
     key=$(date +%F)
-    $SUDO timeshift --create --comments "snapshot_$key"
+    $$SUDO timeshift --create --comments "snapshot_$key"
     check_success "Snapshot konnte nicht erstellt werden."
 
     [[ $feedback_mode == true ]] && echo "+ Snapshot 'snapshot_$key' wurde erfolgreich erstellt"
 
-    
-    # Backup-Konfiguration speichern @TODO
-    #save_config "backup" "last_backup" "$(date +%F-%T)"
-    #save_config "backup" "source" "$backup_sources"
-    #save_config "backup" "target" "$backup_target_dir"
 }
 
 # Starte das Backup
 install
-[[ $feedback_mode == true ]] && echo "Nutze 'sudo timeshift --create --comments \"snapshot_BEZEICHNUNG\"' um einen Snapshot zu erstellen."
-[[ $feedback_mode == true ]] && echo "Nutze 'sudo timeshift --list' um eine Liste aller erstellten Snapshots zu erhalten."
+[[ $feedback_mode == true ]] && echo "Nutze '$SUDO timeshift --create --comments \"snapshot_BEZEICHNUNG\"' um einen Snapshot zu erstellen."
+[[ $feedback_mode == true ]] && echo "Nutze '$SUDO timeshift --list' um eine Liste aller erstellten Snapshots zu erhalten."
 
 if [[ $silent_mode == true]] || $(ask_yes_no "Möchten Sie jetzt einen Snapshot erstellen?" "n"); then
     perform_backup
 fi
+
+# Backup-Konfiguration speichern @TODO
+#save_config "backup" "last_backup" "$(date +%F-%T)"
+#save_config "backup" "source" "$backup_sources"
+#save_config "backup" "target" "$backup_target_dir"

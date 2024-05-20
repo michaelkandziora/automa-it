@@ -38,8 +38,8 @@ function setup_nodejs() {
     node_version=${node_version:-"14.x"}  # Standardversion festlegen
 
     # NodeSource Repository hinzufügen und Installation durchführen
-    curl -fsSL https://deb.nodesource.com/setup_$node_version | sudo -E bash -
-    sudo apt-get install -y nodejs
+    curl -fsSL https://deb.nodesource.com/setup_$node_version | $SUDO -E bash -
+    $SUDO apt-get install -y nodejs
 
     # Prüfen, ob Node.js und npm korrekt installiert wurden
     if command -v node > /dev/null 2>&1 && command -v npm > /dev/null 2>&1; then

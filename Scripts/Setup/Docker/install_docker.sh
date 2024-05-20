@@ -36,12 +36,15 @@ function install_docker() {
     load_config "docker"
 
     # Installationsprozess starten
-    sudo apt-get update
-    sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    sudo apt-get update
-    sudo apt-get install -y docker-ce
+    $SUDO apt-get update
+    $SUDO apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | $SUDO apt-key add -
+    $SUDO add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    $SUDO apt-get update
+    $SUDO apt-get install -y docker-ce
+
+    echo "Ihren Nutzer der docker Gruppe hinzufügen, damit Sie authorisiert sind den docker Befehl zu nutzen"
+    $$SUDO adduser $(whoami) docker
 
     echo -e "${GREEN}Docker wurde erfolgreich installiert.${NC}"
     

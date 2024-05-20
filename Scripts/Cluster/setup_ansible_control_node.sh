@@ -8,9 +8,9 @@ fi
 
 # Installation von Ansible
 echo "Installiere Ansible..."
-sudo apt-get update && sudo apt-get install -y software-properties-common
-sudo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt-get install -y ansible
+$SUDO apt-get update && $SUDO apt-get install -y software-properties-common
+$SUDO apt-add-repository --yes --update ppa:ansible/ansible
+$SUDO apt-get install -y ansible
 
 # Basisverzeichnis für Ansible
 ANSIBLE_DIR=~/ansible

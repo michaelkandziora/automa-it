@@ -11,34 +11,34 @@ function check_root {
 # Überprüfen, ob das Skript mit root-Rechten ausgeführt wird
 check_root
 
-# Pfad zur sudoers-Datei
-SUDOERS_FILE="/etc/sudoers"
+# Pfad zur $SUDOers-Datei
+$SUDOERS_FILE="/etc/$SUDOers"
 
-# Backup der sudoers-Datei erstellen
-cp $SUDOERS_FILE ${SUDOERS_FILE}.bak
+# Backup der $SUDOers-Datei erstellen
+cp $$SUDOERS_FILE ${$SUDOERS_FILE}.bak
 
 # Funktion zum Hinzufügen von NOPASSWD zu einer Gruppe
 function add_nopasswd {
     GROUP=$1
-    # Überprüfen, ob die Gruppe in der sudoers-Datei existiert
-    if grep -q "%${GROUP}" $SUDOERS_FILE; then
+    # Überprüfen, ob die Gruppe in der $SUDOers-Datei existiert
+    if grep -q "%${GROUP}" $$SUDOERS_FILE; then
         # Überprüfen, ob bereits NOPASSWD gesetzt ist
-        if ! grep -q "%${GROUP} ALL=(ALL) NOPASSWD: ALL" $SUDOERS_FILE; then
+        if ! grep -q "%${GROUP} ALL=(ALL) NOPASSWD: ALL" $$SUDOERS_FILE; then
             echo "Füge NOPASSWD zu Gruppe ${GROUP} hinzu"
-            echo "%${GROUP} ALL=(ALL) NOPASSWD: ALL" >> $SUDOERS_FILE
+            echo "%${GROUP} ALL=(ALL) NOPASSWD: ALL" >> $$SUDOERS_FILE
         else
             echo "NOPASSWD ist bereits für Gruppe ${GROUP} gesetzt"
         fi
     else
-        echo "Gruppe ${GROUP} ist nicht in der sudoers-Datei vorhanden"
+        echo "Gruppe ${GROUP} ist nicht in der $SUDOers-Datei vorhanden"
     fi
 }
 
-# Liste der gängigen sudo-Gruppen unter Linux
-SUDO_GROUPS=("sudo" "wheel" "admin")
+# Liste der gängigen $SUDO-Gruppen unter Linux
+$SUDO_GROUPS=("$SUDO" "wheel" "admin")
 
-# Hinzufügen von NOPASSWD zu den vorhandenen sudo-Gruppen
-for GROUP in "${SUDO_GROUPS[@]}"; do
+# Hinzufügen von NOPASSWD zu den vorhandenen $SUDO-Gruppen
+for GROUP in "${$SUDO_GROUPS[@]}"; do
     add_nopasswd $GROUP
 done
 

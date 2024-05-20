@@ -33,8 +33,8 @@ function setup_python() {
     echo -e "${GREEN}Beginne mit der Installation von pyenv und Python...${NC}"
 
     # Abhängigkeiten für pyenv und Python-Build installieren
-    sudo apt-get update
-    sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+    $SUDO apt-get update
+    $SUDO apt-get install -y make build-essential libssl-dev zlib1g-dev \
         libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
         libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 

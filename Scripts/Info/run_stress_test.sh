@@ -4,8 +4,8 @@
 if ! command -v stress-ng &> /dev/null
 then
     echo "stress-ng ist nicht installiert. Installation wird durchgeführt..."
-    sudo apt-get update
-    sudo apt-get install -y stress-ng
+    $SUDO apt-get update
+    $SUDO apt-get install -y stress-ng
 fi
 
 # Ausführen des Stresstests
