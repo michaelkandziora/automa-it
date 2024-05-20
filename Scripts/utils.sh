@@ -16,9 +16,9 @@ done
 
 # Check for root or $SUDO privileges
 if [ "$EUID" -ne 0 ]; then
-    $SUDO="sudo"
+    SUDO="sudo"
 else
-    $SUDO=""
+    SUDO=""
 fi
 
 # Funktion, um zu überprüfen, ob das Skript als Root ausgeführt wird
