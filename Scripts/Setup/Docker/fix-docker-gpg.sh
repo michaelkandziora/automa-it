@@ -1,23 +1,36 @@
 #!/bin/bash
 
-# Check for root or sudo privileges
-if [ "$EUID" -ne 0 ]; then
-    SUDO="sudo"
-else
-    SUDO=""
-fi
+
+# Importiere Hilfsfunktionen für Konfigurationsmanagement
+# Sucht nach der Datei 'utils.sh' ab dem Wurzelverzeichnis des Projekts
+# Start im aktuellen Verzeichnis
+dir="$(pwd)"
+
+# Loop, um nach oben im Verzeichnisbaum zu gehen
+while : ; do
+    # Suche nach der utils.sh im aktuellen Verzeichnis
+    file_path=$(find "$dir" -maxdepth 1 -type f -name "utils.sh" -print -quit)
+    
+    # Prüfen, ob die Datei gefunden wurde
+    if [[ -n $file_path ]]; then
+        source "$file_path"
+        echo "Datei gefunden und gesourced: $file_path"
+        break
+    fi
+
+    # Abbruchbedingungen: root oder temp directory erreicht
+    if [[ "$dir" == "/" ]]; then
+        echo "utils.sh nicht gefunden. Suchbereich endete bei: $dir"
+        break
+    fi
+
+    # Gehe ein Verzeichnis höher
+    dir=$(dirname "$dir")
+done
 
 # Variablen für die URL des Docker GPG-Schlüssels und den neuen Speicherort
 DOCKER_GPG_URL="https://download.docker.com/linux/ubuntu/gpg"
 DOCKER_GPG_KEYRING="/etc/apt/trusted.gpg.d/docker-archive-keyring.gpg"
-
-# Funktion zur Überprüfung, ob ein Befehl erfolgreich ausgeführt wurde
-check_success() {
-    if [ $? -ne 0 ]; then
-        echo "Fehler: $1"
-        exit 1
-    fi
-}
 
 # Entferne alte Docker-Schlüssel aus dem veralteten Schlüsselbund
 $SUDO apt-key del $($SUDO apt-key list | grep -A 1 "Docker" | grep "pub" | awk '{print $2}' | cut -d'/' -f2)
