@@ -16,7 +16,7 @@ done
 
 # Check for root or $SUDO privileges
 if [ "$EUID" -ne 0 ]; then
-    $SUDO="$SUDO"
+    $SUDO="sudo"
 else
     $SUDO=""
 fi

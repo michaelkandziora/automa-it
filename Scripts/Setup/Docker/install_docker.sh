@@ -44,7 +44,7 @@ function install_docker() {
     $SUDO apt-get install -y docker-ce
 
     echo "Ihren Nutzer der docker Gruppe hinzufügen, damit Sie authorisiert sind den docker Befehl zu nutzen"
-    $$SUDO adduser $(whoami) docker
+    $SUDO adduser $(whoami) docker
 
     echo -e "${GREEN}Docker wurde erfolgreich installiert.${NC}"
     
